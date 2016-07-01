@@ -45,6 +45,7 @@ You would have to change it to this:
 ```
 
 And add the following files
+
 **locale.en**
 ```
 #{main_text}=This text should be different on each languange
