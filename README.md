@@ -13,9 +13,9 @@ var staticFilesDir = path.join(__dirname, 'public');
 var localizer = new loclib.default(staticFilesDir);
 
 // let's add support for english (default) and spanish languages
-loc.loadLanguage('en', path.join(__dirname, 'locale.en'), true);
-loc.loadLanguage('es', path.join(__dirname, 'locale.es'));
-app.use(loc.middleware());
+localizer.loadLanguage('en', path.join(__dirname, 'locale.en'), true);
+localizer.loadLanguage('es', path.join(__dirname, 'locale.es'));
+app.use(localizer.middleware());
 
 // now, mount the actual static files handler on both language paths
 app.use('/en', express.static(staticFilesDir));
