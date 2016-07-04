@@ -48,10 +48,10 @@ And add the following files
 
 **locale.en**
 ```
-#{main_text}=This text should be different on each languange
+main_text=This text should be different on each languange
 ```
 
 **locale.es**
 ```
-#{main_text}=Este texto debe ser distinto en cada idioma
+main_text=Este texto debe ser distinto en cada idioma
 ```
