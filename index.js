@@ -6,10 +6,9 @@ let Localizer = class Localizer {
     constructor(staticFilesPath) {
         this._staticFilesPath = staticFilesPath;
         this._lang = {};
-        this._defaultLang
     }
 
-    loadLanguage(lang, file, isDefault) {
+    loadLanguage(lang, file) {
         this._lang[lang] = {};
 
         var content = fs.readFileSync(file).toString();
@@ -21,16 +20,18 @@ let Localizer = class Localizer {
 
             this._lang[lang][id] = value;
         }
-
-        if (isDefault || this._defaultLang == undefined) {
-            this._defaultLang = lang;
-        }
     }
 
     middleware() {
         var realThis = this;
         return function (req, res, next) {
             var currentLang = realThis.getLang(req.url);
+
+            if (currentLang == undefined) {
+                next();
+                return;
+            }
+
             var reqPath = realThis.removeLang(req.url);
 
             var filePath = path.join(realThis._staticFilesPath, reqPath);
@@ -78,7 +79,7 @@ let Localizer = class Localizer {
             }
         }
 
-        return this._defaultLang;
+        return undefined;
     }
 }
 
