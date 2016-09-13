@@ -53,7 +53,7 @@ let Localizer = class Localizer {
             var content = fs.readFileSync(filePath).toString();
             for (var key in realThis._lang[currentLang]) {
                 var val = realThis._lang[currentLang][key];
-                content = content.replace(new Regexp(`#{${key}}`, "g"), val);
+                content = content.replace(new RegExp(`#{${key}}`, "g"), val);
             }
 
             res.send(content);
