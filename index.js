@@ -36,7 +36,7 @@ let Localizer = class Localizer {
 
             var filePath = path.join(realThis._staticFilesPath, reqPath);
 
-            if (filePath.endsWith("/")) {
+            if (filePath.endsWith(path.sep)) {
                 filePath += "index.html";
             }
 
